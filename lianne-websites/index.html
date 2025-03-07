@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form onsubmit="return checkInput(event);">
+        <label>Username: </label>
+        <input type="text" id="Username" required><br>
+        <label>Password: </label>
+        <input type="password" id="Password" required><br>
+        <input type="checkbox" id="IAmNotARobot" required>
+        <label>I am not a robot.</label><br>
+        <p id="Incorrect" style="color: red;"></p>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        // Note: Hardcoding credentials is insecure. Use a secure method instead.
+        const validUsername = "liannetam";
+        const validPassword = "s1413353";
+
+        function checkInput(event) {
+            event.preventDefault(); // Prevent form submission
+            const username = document.getElementById('Username').value;
+            const password = document.getElementById('Password').value;
+            const isRobotChecked = document.getElementById('IAmNotARobot').checked;
+
+            if (username === validUsername && password === validPassword && isRobotChecked) {
+                window.location.replace('redirect.html');
+            } else {
+                document.getElementById('Incorrect').innerHTML = "Incorrect username or Password.";
+            }
+        }
+    </script>
+</body>
+</html>
